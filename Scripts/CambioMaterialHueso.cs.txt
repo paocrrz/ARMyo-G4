@@ -1,0 +1,32 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CambioColorHueso : MonoBehaviour
+{
+    public Material materialSeleccionado;
+
+    private Material materialOriginal;
+    private Renderer rend;
+    private bool cambiado = false;
+
+    void Start()
+    {
+        rend = GetComponentInChildren<Renderer>();
+        materialOriginal = rend.material; // guardamos el original
+    }
+
+    public void CambiarMaterial()
+    {
+        if (cambiado)
+        {
+            rend.material = materialOriginal;
+        }
+        else
+        {
+            rend.material = materialSeleccionado;
+        }
+
+        cambiado = !cambiado;
+    }
+}
